@@ -1,0 +1,114 @@
+﻿@model List<Document_Intelligence_Task.Domain.Models.IDDocument_Passport>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Passports</title>
+    <link rel="stylesheet" href="~/css/ListPassportsStyleSheet.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="list-container">
+        <h1>List of Passports</h1>
+        @foreach (var passport in Model)
+        {
+            <div class="passport-container">
+
+                <!-- File Display Section -->
+                @if (!string.IsNullOrEmpty(passport.fileUrl))
+                {
+                    var fileExtension = System.IO.Path.GetExtension(passport.fileUrl).ToLower();
+
+                    <div class="file-display">
+                        @if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png" || fileExtension == ".gif")
+                        {
+                            <img src="~/@passport.fileUrl" alt="Uploaded Image" class="file-image" />
+                        }
+                        else if (fileExtension == ".pdf")
+                        {
+                            <iframe src="~/@passport.fileUrl" class="file-iframe"></iframe>
+                        }
+                        else
+                        {
+                            <a href="~/@passport.fileUrl" download class="file-download">Download File</a>
+                        }
+                    </div>
+                }
+
+                <h2>Passport Details</h2>
+                <div class="passport-details">
+                    <div class="detail">
+                        <label>Document ID:</label>
+                        <span>@passport.DocumentId</span>
+                    </div>
+                    <div class="detail">
+                        <label>Document Number:</label>
+                        <span>@passport.DocumentNumber</span>
+                    </div>
+                    <div class="detail">
+                        <label>Name:</label>
+                        <span>@passport.FirstName @passport.MiddleName @passport.LastName</span>
+                    </div>
+                    <div class="detail">
+                        <label>Date of Birth:</label>
+                        <span>@passport.DateOfBirth?.ToShortDateString()</span>
+                    </div>
+                    <div class="detail">
+                        <label>Date of Issue:</label>
+                        <span>@passport.DateOfIssue?.ToShortDateString()</span>
+                    </div>
+                    <div class="detail">
+                        <label>Date of Expiration:</label>
+                        <span>@passport.DateOfExpiration?.ToShortDateString()</span>
+                    </div>
+                    <div class="detail">
+                        <label>Sex:</label>
+                        <span>@passport.Sex</span>
+                    </div>
+                    <div class="detail">
+                        <label>Country/Region:</label>
+                        <span>@passport.CountryRegion</span>
+                    </div>
+                    <div class="detail">
+                        <label>Nationality:</label>
+                        <span>@passport.Nationality</span>
+                    </div>
+                    <div class="detail">
+                        <label>Place of Birth:</label>
+                        <span>@passport.PlaceOfBirth</span>
+                    </div>
+                    @if (passport?.PlaceOfIssue != null)
+                    {
+                        <div class="detail">
+                            <label>Place of Issue:</label>
+                            <span>@passport.PlaceOfIssue</span>
+                        </div>
+                    }
+                    <div class="detail">
+                        <label>Issuing Authority:</label>
+                        <span>@passport?.IssuingAuthority</span>
+                    </div>
+                    <div class="detail">
+                        <label>Personal Number:</label>
+                        <span>@passport?.PersonalNumber</span>
+                    </div>
+                </div>
+
+                <!-- Buttons Section -->
+                <div class="button-container">
+                    <!-- Delete Button -->
+                    <form action="/DeletePassport/@passport?.DocumentId" method="post" class="delete-form">
+                        <button type="submit" class="action-button delete-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+        <div class="button-primary">
+            <a href="/passport" class="action-button">Analyze Passport</a>
+            <a href="/" class="action-button">Home</a>
+        </div>
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+﻿@model Document_Intelligence_Task.Domain.Models.IDDocument_Passport;
+@using System.IO;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Details</title>
+    <link rel="stylesheet" href="~/css/DisplayPassportStyleSheet.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="passport-container">
+
+        <!-- File Display Section -->
+        @if (!string.IsNullOrEmpty(Model.fileUrl))
+        {
+            var fileExtension = System.IO.Path.GetExtension(Model.fileUrl).ToLower();
+
+            <div class="file-display">
+                @if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png" || fileExtension == ".gif")
+                {
+                    <img src="~/@Model.fileUrl" alt="Uploaded Image" class="file-image" />
+                }
+                else if (fileExtension == ".pdf")
+                {
+                    <iframe src="~/@Model.fileUrl" class="file-iframe"></iframe>
+                }
+                else
+                {
+                    <a href="~/@Model.fileUrl" download class="file-download">Download File</a>
+                }
+            </div>
+        }
+
+        <h1>Passport Details</h1>
+        <div class="passport-details">
+            <div class="detail">
+                <label>Document ID:</label>
+                <span>@Model?.DocumentId</span>
+            </div>
+            <div class="detail">
+                <label>Document Number:</label>
+                <span>@Model?.DocumentNumber</span>
+            </div>
+            <div class="detail">
+                <label>Name:</label>
+                <span>@Model?.FirstName @Model?.MiddleName @Model?.LastName</span>
+            </div>
+            <div class="detail">
+                <label>Date of Birth:</label>
+                <span>@Model?.DateOfBirth?.ToShortDateString()</span>
+            </div>
+            <div class="detail">
+                <label>Date of Issue:</label>
+                <span>@Model?.DateOfIssue?.ToShortDateString()</span>
+            </div>
+            <div class="detail">
+                <label>Date of Expiration:</label>
+                <span>@Model?.DateOfExpiration?.ToShortDateString()</span>
+            </div>
+            <div class="detail">
+                <label>Sex:</label>
+                <span>@Model?.Sex</span>
+            </div>
+            <div class="detail">
+                <label>Country/Region:</label>
+                <span>@Model?.CountryRegion</span>
+            </div>
+            <div class="detail">
+                <label>Nationality:</label>
+                <span>@Model?.Nationality</span>
+            </div>
+            <div class="detail">
+                <label>Place of Birth:</label>
+                <span>@Model?.PlaceOfBirth</span>
+            </div>
+            @if(Model?.PlaceOfIssue != null)
+            {
+                <div class="detail">
+                    <label>Place of Issue:</label>
+                    <span>@Model.PlaceOfIssue</span>
+                </div>
+            }
+            <div class="detail">
+                <label>Issuing Authority:</label>
+                <span>@Model?.IssuingAuthority</span>
+            </div>
+            <div class="detail">
+                <label>Personal Number:</label>
+                <span>@Model?.PersonalNumber</span>
+            </div>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="button-container">
+            <a href="/passport" class="action-button">Analyze another Passport</a>
+            <a href="/" class="action-button">Home</a>
+        </div>
+    </div>
+</body>
+</html>

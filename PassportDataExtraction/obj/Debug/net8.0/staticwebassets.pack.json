@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\AI-Internship-Tasks\\Task1\\Document-Intelligence-Task1\\Document-Intelligence-Task\\wwwroot\\css\\DisplayPassportStyleSheet.css",
+      "PackagePath": "staticwebassets\\css\\DisplayPassportStyleSheet.css"
+    },
+    {
+      "Id": "E:\\AI-Internship-Tasks\\Task1\\Document-Intelligence-Task1\\Document-Intelligence-Task\\wwwroot\\css\\ListPassportsStyleSheet.css",
+      "PackagePath": "staticwebassets\\css\\ListPassportsStyleSheet.css"
+    },
+    {
+      "Id": "E:\\AI-Internship-Tasks\\Task1\\Document-Intelligence-Task1\\Document-Intelligence-Task\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "E:\\AI-Internship-Tasks\\Task1\\Document-Intelligence-Task1\\Document-Intelligence-Task\\wwwroot\\files\\301b993e-81a6-4f21-81e1-4cc82917c38a_Screenshot 2025-03-13 055202.png",
+      "PackagePath": "staticwebassets\\files\\301b993e-81a6-4f21-81e1-4cc82917c38a_Screenshot 2025-03-13 055202.png"
+    },
+    {
+      "Id": "E:\\AI-Internship-Tasks\\Task1\\Document-Intelligence-Task1\\Document-Intelligence-Task\\wwwroot\\files\\d315dc3e-8f81-47c6-8dc1-6809661df424_Screenshot 2025-03-16 125356.png",
+      "PackagePath": "staticwebassets\\files\\d315dc3e-8f81-47c6-8dc1-6809661df424_Screenshot 2025-03-16 125356.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Document-Intelligence-Task.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Document-Intelligence-Task.props",
+      "PackagePath": "build\\Document-Intelligence-Task.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Document-Intelligence-Task.props",
+      "PackagePath": "buildMultiTargeting\\Document-Intelligence-Task.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Document-Intelligence-Task.props",
+      "PackagePath": "buildTransitive\\Document-Intelligence-Task.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

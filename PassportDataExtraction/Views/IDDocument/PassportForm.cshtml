@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Passport</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+        }
+
+        .form-container {
+            padding: 40px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .form-container h1 {
+                margin-bottom: 20px;
+                font-size: 28px;
+                color: #333;
+                font-weight: 600;
+            }
+
+            .form-container label {
+                display: block;
+                margin-bottom: 15px;
+                font-weight: bold;
+                color: #555;
+                font-size: 16px;
+            }
+
+            .form-container input[type="file"] {
+                display: none;
+            }
+
+        .file-upload {
+            display: block;
+            width: 100%;
+            padding: 20px 5px;
+            margin-bottom: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+            .file-upload:hover {
+                border-color: #007bff;
+                background-color: #e6f0ff;
+            }
+
+            .file-upload span {
+                color: #007bff;
+                font-weight: bold;
+            }
+
+        .form-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+            .form-container button:hover {
+                background-color: #0056b3;
+            }
+
+        .document-preview {
+            width: 50%;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+            .document-preview img,
+            .document-preview iframe {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .document-preview p {
+                color: #888;
+                font-style: italic;
+                text-align: center;
+            }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+
+        /* New Button Style */
+        .navigate-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 15px 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+            .navigate-button:hover {
+                background-color: #218838;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Upload Passport</h1>
+            <form action="AnalyzePassport" method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="file">Choose a file:</label>
+                    <label class="file-upload" for="file">
+                        <span>Click to upload</span> or drag and drop
+                    </label>
+                    <input type="file" name="file" id="file" accept=".pdf,.jpg,.jpeg,.png" onchange="previewDocument(event)" />
+                    <div class="file-name" id="file-name">No file selected</div>
+                </div>
+                <div>
+                    <button type="submit">Analyze</button>
+                </div>
+
+                <a href="/" class="navigate-button">Back</a>
+            </form>
+            
+            
+        </div>
+        <div class="document-preview" id="document-preview">
+            <p>No document selected.</p>
+        </div>
+    </div>
+
+    <script>
+        function previewDocument(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('document-preview');
+            const fileName = document.getElementById('file-name');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    if (file.type === 'application/pdf') {
+                        preview.innerHTML = `<iframe src="${e.target.result}" style="width: 100%; height: 100%;"></iframe>`;
+                    } else if (file.type.startsWith('image/')) {
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Document Preview" />`;
+                    } else {
+                        preview.innerHTML = `<p>Unsupported file type.</p>`;
+                    }
+                };
+                reader.readAsDataURL(file);
+                fileName.textContent = file.name;
+            } else {
+                preview.innerHTML = `<p>No document selected.</p>`;
+                fileName.textContent = 'No file selected';
+            }
+        }
+    </script>
+</body>
+</html>
