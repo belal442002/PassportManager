@@ -52,10 +52,10 @@ cd PassportDataExtraction
 
 # 2. Open the Solution
 ## Open the .sln file using Visual Studio 2022 or later.
-## File structure:
-## /PassportManager.sln
-## /assets/
-## /ProjectFolder/
+### File structure:
+#### /PassportManager.sln
+#### /assets/
+#### /ProjectFolder/
 
 # 3. Configure Azure Settings
 ## In appsettings.json, set the following values:
@@ -84,14 +84,14 @@ Here’s a visual walkthrough of the project in action:
 ### 2. File Selection & Upload  
 ![Upload](assets/image2.png)
 
-### 3. Data Extraction in Progress  
+### 3. Uploaded Document  
 ![Uploaded Document](assets/image3.png)
 
 ### 4. Extracted Fields from Passport  
 ![Extracted Data](assets/image4.png)
 
-### 5. Stored Records View  
+### 5. Record View  
 ![Extracted Data](assets/image5.png)
 
-### 6. JSON Output from Azure  
+### 6. Stored Records View  
 ![Database Records View](assets/image6.png)
