@@ -36,6 +36,9 @@ This solution demonstrates how to combine Azure’s powerful document intelligen
 - Azure Document Intelligence (ID Document Model)
 - REST API Integration
 - Entity Framework Core
+- Repository Pattern
+- Generic Repository
+- UnitOfWork
 - SQL Server (or any EF-supported DB)
 - Bootstrap / Razor Views
 
@@ -43,7 +46,6 @@ This solution demonstrates how to combine Azure’s powerful document intelligen
 
 ## 🧑‍💻 How to Run This Project
 
-```bash
 # 1. Clone the Repository
 git clone https://github.com/belal442002/PassportManager.git
 cd PassportDataExtraction
