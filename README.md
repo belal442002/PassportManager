@@ -51,14 +51,14 @@ git clone https://github.com/belal442002/PassportManager.git
 cd PassportDataExtraction
 
 # 2. Open the Solution
-# Open the .sln file using Visual Studio 2022 or later.
-# File structure:
-# /PassportManager.sln
-# /assets/
-# /ProjectFolder/
+## Open the .sln file using Visual Studio 2022 or later.
+## File structure:
+## /PassportManager.sln
+## /assets/
+## /ProjectFolder/
 
 # 3. Configure Azure Settings
-# In appsettings.json, set the following values:
+## In appsettings.json, set the following values:
 
 {
   "AzureDocumentIntelligence": {
